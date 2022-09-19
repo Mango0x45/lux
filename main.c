@@ -31,14 +31,14 @@ static void usage(char *);
 int
 main(int argc, char **argv)
 {
-        int opt;
-        struct luxdisp disp;
+	int opt;
+	struct luxdisp disp;
 
-        luxinit(&disp);
+	luxinit(&disp);
 	if (argc == 1)
 		goto Gflag;
 	else while ((opt = getopt(argc, argv, ":d:D:gGi:I:s:S:")) != -1) {
-                switch (opt) {
+		switch (opt) {
 		case 'g':;
 			int br;
 			if ((br = luxget(&disp)) == -1)
@@ -56,7 +56,7 @@ Gflag:;
 			if (luxdec(&disp, parseint(optarg)) == -1)
 				err(EXIT_FAILURE, "luxdec");
 			break;
-                case 'i':
+		case 'i':
 			if (luxinc(&disp, parseint(optarg)) == -1)
 				err(EXIT_FAILURE, "luxinc");
 			break;
@@ -68,7 +68,7 @@ Gflag:;
 			if (luxdecp(&disp, parsedouble(optarg)) == -1)
 				err(EXIT_FAILURE, "luxdecp");
 			break;
-                case 'I':
+		case 'I':
 			if (luxincp(&disp, parsedouble(optarg)) == -1)
 				err(EXIT_FAILURE, "luxincp");
 			break;
@@ -76,13 +76,13 @@ Gflag:;
 			if (luxsetp(&disp, parsedouble(optarg)) == -1)
 				err(EXIT_FAILURE, "luxsetp");
 			break;
-                default:
-                        usage(argv[0]);
-                }
-        }
+		default:
+			usage(argv[0]);
+		}
+	}
 
-        luxfree(&disp);
-        return EXIT_SUCCESS;
+	luxfree(&disp);
+	return EXIT_SUCCESS;
 }
 
 int
