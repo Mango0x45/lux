@@ -108,6 +108,6 @@ parsedouble(char *s)
 void
 usage(char *s)
 {
-	fprintf(stderr, "Usage: %s [-g | -dDiIsS val]\n", s);
+	fprintf(stderr, "Usage: %s [-gG | -dDiIsS val]\n", s);
 	exit(EXIT_FAILURE);
 }
