@@ -1,9 +1,11 @@
 .POSIX:
 
+CFLAGS  = -std=c11 -O3 -pipe -Wall -Wextra -Werror -pedantic
 LDFLAGS = -llux
-CFLAGS = -std=c11 -O3 -pipe -Wall -Wextra -Werror -pedantic
-PREFIX = /usr
-MANDIR = ${PREFIX}/share/man
+
+PREFIX  = /usr
+DPREFIX = ${DESTDIR}${PREFIX}
+MANDIR  = ${DPREFIX}/share/man
 
 target = lux
 
@@ -12,8 +14,8 @@ ${target}: main.c
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $<
 
 install:
-	mkdir -p ${PREFIX}/bin ${MANDIR}/man1
-	cp ${target} ${PREFIX}/bin
+	mkdir -p ${DPREFIX}/bin ${MANDIR}/man1
+	cp ${target} ${DPREFIX}/bin
 	cp *.1 ${MANDIR}/man1
 
 clean:
