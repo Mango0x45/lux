@@ -1,6 +1,9 @@
 .POSIX:
 
-CFLAGS  = -std=c11 -O3 -pipe -Wall -Wextra -Werror -pedantic
+CFLAGS  = \
+	-Wall -Wextra -Wpedantic -Werror \
+	-O3 -march=native -mtune=native -fomit-frame-pointer \
+	-std=c11 -pipe
 LDFLAGS = -llux
 
 PREFIX  = /usr
