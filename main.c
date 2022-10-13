@@ -36,7 +36,7 @@ main(int argc, char **argv)
 {
 	int br, max, opt;
 	double pr;
-	struct luxdisp disp;
+	lux_t disp;
 
 	luxinit(&disp);
 	if (argc == 1)
