@@ -36,7 +36,7 @@ main(int argc, char **argv)
 	int br, max, opt;
 	double pr;
 	lux_t disp;
-	const char *optstr = "d:D:gGi:I:s:S:";
+	const char *optstr = "d:D:gGi:I:ms:S:";
 	static struct option longopts[] = {
 		{"decrease",         required_argument, NULL, 'd'},
 		{"decrease-percent", required_argument, NULL, 'D'},
@@ -44,6 +44,7 @@ main(int argc, char **argv)
 		{"get-percent",      no_argument,       NULL, 'G'},
 		{"increase",         required_argument, NULL, 'i'},
 		{"increase-percent", required_argument, NULL, 'I'},
+		{"max",              no_argument,       NULL, 'm'},
 		{"set",              required_argument, NULL, 's'},
 		{"set-percent",      required_argument, NULL, 'S'},
 		{NULL,               0,                 NULL,  0}
@@ -58,6 +59,11 @@ main(int argc, char **argv)
 			break;
 
 		switch (opt) {
+		case 'm':
+			if ((max = luxmax(&disp)) == -1)
+				die("luxmax");
+			printf("%d\n", max);
+			break;
 		case 'g':
 			if ((br = luxget(&disp)) == -1)
 				die("luxget");
@@ -139,6 +145,6 @@ parsedouble(char *s)
 void
 usage(char *s)
 {
-	fprintf(stderr, "Usage: %s [-gG | -dDiIsS val]\n", s);
+	fprintf(stderr, "Usage: %s [-gGm | -dDiIsS val]\n", s);
 	exit(EXIT_FAILURE);
 }
