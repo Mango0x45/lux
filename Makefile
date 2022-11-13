@@ -13,7 +13,6 @@ target = lux
 
 all: ${target}
 ${target}: ${target}.c
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $<
 
 install:
 	mkdir -p ${DPREFIX}/bin ${MANDIR}/man1
