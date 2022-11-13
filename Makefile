@@ -13,7 +13,7 @@ MANDIR  = ${DPREFIX}/share/man
 target = lux
 
 all: ${target}
-${target}: main.c
+${target}: ${target}.c
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $<
 
 install:
