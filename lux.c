@@ -15,12 +15,11 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-#define _POSIX_C_SOURCE 2
-
 #include <err.h>
+#include <getopt.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 #include <lux.h>
 
@@ -37,11 +36,27 @@ main(int argc, char **argv)
 	int br, max, opt;
 	double pr;
 	lux_t disp;
+	const char *optstr = "d:D:gGi:I:s:S:";
+	static struct option longopts[] = {
+		{"decrease",         required_argument, NULL, 'd'},
+		{"decrease-percent", required_argument, NULL, 'D'},
+		{"get",              no_argument,       NULL, 'g'},
+		{"get-percent",      no_argument,       NULL, 'G'},
+		{"increase",         required_argument, NULL, 'i'},
+		{"increase-percent", required_argument, NULL, 'I'},
+		{"set",              required_argument, NULL, 's'},
+		{"set-percent",      required_argument, NULL, 'S'},
+		{NULL,               0,                 NULL,  0}
+	};
 
 	luxinit(&disp);
 	if (argc == 1)
 		goto Gflag;
-	else while ((opt = getopt(argc, argv, ":d:D:gGi:I:s:S:")) != -1) {
+	else while (true) {
+		opt = getopt_long(argc, argv, optstr, longopts, NULL);
+		if (opt == -1)
+			break;
+
 		switch (opt) {
 		case 'g':
 			if ((br = luxget(&disp)) == -1)
