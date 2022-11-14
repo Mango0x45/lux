@@ -1,0 +1,96 @@
+.\" BSD Zero Clause License
+.\"
+.\" Copyright (c) 2022 Thomas Voss
+.\"
+.\" Permission to use, copy, modify, and/or distribute this software for any
+.\" purpose with or without fee is hereby granted.
+.\"
+.\" THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+.\" REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+.\" AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+.\" INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+.\" LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+.\" OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+.\" PERFORMANCE OF THIS SOFTWARE.
+.Dd $Mdocdate: November 14 2022 $
+.Dt LUX 1
+.Os Linux
+.Sh NAME
+.Nm lux
+.Nd query and modify display brightness
+.Sh SYNOPSIS
+.Nm
+.Op Fl gGm
+.Op Fl dDiIsS Ar val
+.Sh DESCRIPTION
+The
+.Nm
+utility allows you to get display brightness information as well as set it.
+When invoked without any arguments,
+.Nm
+will print the current brightness level as a percentage
+.Po
+.Dq 45.000000
+means that the current brightness level is 45%
+.Pc .
+.Pp
+All flags besides the
+.Fl m
+flag have both lowercase and uppercase variants.
+The lowercase variants operate in terms of brightness units in the range of
+.Bq 0, MAX
+where MAX is a system dependent maximum obtainable with the
+.Fl m
+flag.
+The uppercase variants operate in terms of percentages without a percent symbol
+.Pq Sq %
+as a suffix.
+.Pp
+The options are as follows:
+.Bl -tag -width Ds
+.It Fl d Ns , Fl Fl decrease Ns = Ns Ar val
+Decrease the current display brightness by
+.Ar val
+brightness units.
+.It Fl D Ns , Fl Fl decrease-percent Ns = Ns Ar val
+Decrease the current display brightness to
+.Ar val
+percent.
+.It Fl g Ns , Fl Fl get
+Print the raw current display brightness level.
+.It Fl G Ns , Fl Fl get-percent
+Print the current display brightness level as a percentage.
+.It Fl i Ns , Fl Fl increase Ns = Ns Ar val
+Increase the current display brightness to
+.Ar val
+brightness units.
+.It Fl I Ns , Fl Fl increase-percent Ns = Ns Ar val
+Increase the current display brightness to
+.Ar val
+percent.
+.It Fl m Ns , Fl Fl max
+Print the raw maximum display brightness level.
+.It Fl s Ns , Fl Fl set Ns = Ns Ar val
+Set the current display brightness to
+.Ar val
+brightness units.
+.It Fl S Ns , Fl Fl set-percent Ns = Ns Ar val
+Set the current display brightness to
+.Ar val
+percent.
+.El
+.Sh EXIT STATUS
+.Ex -std
+.Sh EXAMPLES
+Get the current display brightness as a percentage:
+.Pp
+.Dl $ lux
+.Pp
+Increase the current display brightness by 15% and then print out the new
+brightness level as a percentage:
+.Pp
+.Dl $ lux -I 15 -G
+.Sh SEE ALSO
+.Xr lux.h 0
+.Sh AUTHORS
+.An Thomas Voss Aq Mt mail@thomasvoss.com
