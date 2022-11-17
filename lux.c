@@ -47,7 +47,7 @@ main(int argc, char **argv)
 		{"max",              no_argument,       NULL, 'm'},
 		{"set",              required_argument, NULL, 's'},
 		{"set-percent",      required_argument, NULL, 'S'},
-		{NULL,               0,                 NULL,  0}
+		{NULL,               0,                 NULL,  0 }
 	};
 
 	luxinit(&disp);
