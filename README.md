@@ -9,8 +9,8 @@ If you're on an arch-based Linux distribution, then you can install lux from the
 aur:
 
 ```sh
-paru -S lux      # The lastest stable release
-paru -S lux-git  # The most up-to-date release
+paru -S clux      # The lastest stable release
+paru -S clux-git  # The most up-to-date release
 ```
 
 Otherwise if you would like to build from source, simply run:
