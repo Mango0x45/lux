@@ -5,7 +5,7 @@ CFLAGS  = -Wall -Wextra -Wpedantic -Werror \
 	  -std=c11 -pipe
 LDFLAGS = -llux
 
-PREFIX  = /usr
+PREFIX  = /usr/local
 DPREFIX = ${DESTDIR}${PREFIX}
 MANDIR  = ${DPREFIX}/share/man
 
